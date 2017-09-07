@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>欢迎预定创客空间</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+      <link href="stylesheets/style.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no">
+   </head>
+   <body class="index">
+   <div class="container">
+   <div class="row clearfix">
+      <div class="col-md-12 column">
+            <!-- 导航栏 -->
+         <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">首页</a>
+            </div>
+               <ul class="nav navbar-nav navbar-left">
+                  <li>
+                      <a data-toggle="modal" href="#login-container-001">会议室一览</a>
+                  </li>
+                  <li class="dropdown">
+                      <a data-toggle="modal" href="#login-container-001">会议室预约</a>
+                  </li>
+               </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                      <a href="#">联系我们</a>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">常见问题<strong class="caret"></strong></a>
+                     <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Another action</a>
+                        </li>
+                        <li>
+                            <a href="#">Something else here</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="#">Separated link</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="#">One more separated link</a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a data-toggle="modal" href="#login-container-002">注册</a>
+                  </li>
+                  <li class="dropdown">
+                      <a data-toggle="modal" href="#login-container-001">登陆</a>
+                  </li>
+               </ul>
+            </div>
+            
+         </nav>
+      </div>
+   </div>
+  <div class="col-md-12 column pull-right" id="reservation">
+          <button type="button" id="appoint" class="btn btn-block btn-warning btn-lg" data-toggle="modal" href="#login-container-001">立即预定</button>
+   </div>   
+</div>
+
+      <!-- 登陆界面的模态框 -->
+         <div class="modal fade" id="login-container-001" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog login">
+               <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                     <h4 class="modal-title" id="myModalLabel">
+                        登陆
+                     </h4>
+                  </div>
+                  <!--提示框-->
+                  <div class="container">
+                     <div class="row clearfix">
+                        <div class="col-md-6 column">
+                           <div class="alert alert-danger alert-dismissable <%=ishidden%>" id="login-alert">
+                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                              <h4>
+                                 登陆失败！
+                              </h4> <strong>Warning!</strong> 用户名或密码错误，请重试！. <a href="#" class="alert-link">alert link</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                                      <!-- 登陆表单 post方式表单各个input要有name -->
+                  <form class="form-horizontal" role="form" method="post" action="/login" >
+                  <div class="modal-body">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                           <div class="col-sm-10">
+                              <input type="email" name="username" class="form-control" placeholder="请输入邮箱地址" id="inputEmail3" />
+                           </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                           <div class="col-sm-10">
+                              <input type="password" name="password" class="form-control" placeholder="请输入密码" id="inputPassword3" />
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="col-sm-offset-2 col-sm-10">
+                              <div class="checkbox">
+                                  <label><input type="checkbox" />记住密码</label>
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn-info btn" id="login">登陆</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">取消</button> 
+                  </div>
+                  </form>
+               </div>
+               
+            </div>
+            
+         </div>
+         <!--注册界面模态框-->
+         <div class="modal fade" id="login-container-002" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog login">
+               <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                     <h4 class="modal-title" >
+                        注册
+                     </h4>
+                  </div>
+                  <div class="modal-body">
+                     暂未开放敬请期待！
+                  </div>
+                  <div class="modal-body">
+                  <!--两个模态框切换用到了data-target-->
+                  <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#login-container-001">已有账号？点我登录!</a>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+
+      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <!-- 包括所有已编译的插件 -->
+      <script src="javascripts/bootstrap.min.js"></script>
+      <!-- 附加登录的js -->
+      <script src="javascripts/onClickLogin.js"></script>
+      <script>
+      $(function() { if(!$('#login-alert').hasClass('hidden')){
+          $('#login-container-001').modal('show')}}
+          );
+      </script>
+   </body>
+</html>
