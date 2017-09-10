@@ -3,13 +3,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 body.index{
-  background: url(../images/background.png) no-repeat;
+  background-image: url(../images/background.png);
   background-size: 100%;
 }
 body.main{
   padding-left: 0px;
   padding-right: 0px;
 }
+/*body.appointment-back{
+  background-image: url(../images/aboutus.gif);
+  background-size: 100%;
+}*/
 .main_con2{
 
 	padding:80px 0px;
@@ -48,10 +52,15 @@ a {
 	margin-top: 15%;
 	/*opacity: 0.85;*/
 }
-
-.progress-inline{
+/*.progress{
 	display: inline;
 }
+.progress-bar{
+	display: inline;
+}*/
 .main .panel-heading .progress{
 	margin-bottom: 0px;
+}
+/*p.rest{
+float:left;
 }

@@ -6,11 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');  //我是新引入的ejs插件
 var session=require('express-session');
-
+var time = require('silly-datetime');
+var moment = require('moment');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
 
 
@@ -20,7 +20,8 @@ app.use(cookieParser("An"));
 app.use(session({
     secret:'an',
     resave:false,
-    saveUninitialized:true
+    saveUninitialized:true,
+    dateStrings: true
 }));
 // view engine setup 加入了ejs引擎以读取html
 app.set('views', path.join(__dirname, 'views'));
