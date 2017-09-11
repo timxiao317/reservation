@@ -14,6 +14,9 @@ body.main{
   background-image: url(../images/aboutus.gif);
   background-size: 100%;
 }*/
+.index_con2{
+		margin-top: 700px;
+}
 .main_con2{
 
 	padding:80px 0px;
@@ -44,7 +47,8 @@ a {
 }
 
 .col-md-12[id="reservation"] {
-	margin-top: 50%;
+
+
 }
 
 /*使登录框居中，用modal属性不行*/

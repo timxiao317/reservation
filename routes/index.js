@@ -117,4 +117,110 @@ router.get('/logout',function(req,res,next){
 	res.redirect('index');
 });
 
+router.get('/lock',function(req,res,next){
+	var physical = req.query.physical_id;
+	var room = req.query.room_id;
+	console.log({physical_id:physical,room_id: room});
+	var sql = 'Select day_reserve,time_period from users_rooms natural join users where physical_id= ? and room_id = ? ';
+	var sqlparams = [physical,room];
+	var current_date = moment().format('YYYY-MM-DD');
+	var current_hour = moment().format('hh');
+	var judge = 0;
+	console.log(current_date);
+	console.log(current_hour);
+	connection.query(sql,sqlparams,function(err,result){
+		if(err){
+		  console.log('[SELECT ERROR] - ',err.message);
+		  return ;
+		}
+		console.log(result);
+		if(result.length<1)
+			res.send('0');
+		else
+			for (var i = 0; i<result.length; i++)
+			{
+				var day_reserve = new Date(result[i].day_reserve);
+				day_reserve = moment(day_reserve);
+				var gap_date = moment().diff(day_reserve);
+				console.log(gap_date);
+				var time_period = result[i].time_period;
+				if (day_reserve==="a"&gap_date>=28800000&gap_date<=42300000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="b"&gap_date>=43200000&gap_date<=56700000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="c"&gap_date>=57600000&gap_date<=61100000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="d"&gap_date>=115200000&gap_date<=128700000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="e"&gap_date>=129600000&gap_date<=143100000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="f"&gap_date>=144000000&gap_date<=157500000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="g"&gap_date>=201600000&gap_date<=215100000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="h"&gap_date>=216000000&gap_date<=229500000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="i"&gap_date>=230400000&gap_date<=243900000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+			}
+			if(judge == 0)
+			{
+				res.send('0');
+			}
+	});
+});
+
+
+router.get('/test',function(req,res,next){
+	var sql = 'Select day_reserve,time_period from users_rooms';
+	connection.query(sql,function(err,result){
+		if(err){
+			console.log('[SELECT ERROR] - ',err.message);
+			return;
+		}
+		console.log(result[0]);
+		var day_reserve = new Date(result[0].day_reserve);
+		day_reserve = moment(day_reserve);
+		var gap_date = moment().diff(day_reserve);
+		console.log(gap_date);
+		}
+	);
+});
 module.exports = router;
+	
