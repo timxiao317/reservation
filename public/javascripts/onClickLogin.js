@@ -1,4 +1,4 @@
-window.onload = prepareLogin;
+addLoadEvent(prepareLogin);
 function prepareLogin()
 {
 	if(!document.getElementById)
@@ -6,10 +6,6 @@ function prepareLogin()
 		return false;
 	}
 	if(!document.getElementsByClassName)
-	{
-		return false;
-	}
-	if(!document.getElementById("panel_element_small1"))
 	{
 		return false;
 	}
@@ -26,6 +22,7 @@ function prepareLogin()
 function onClickLogin(whichbut){
 	var room_id = whichbut.id.slice(0,3);
 	var time_period =whichbut.id.slice(3,4);
+	var day_reserve = document.getElementById("currentDate").innerText;
 	var xmlhttp;
 	if (window.XMLHttpRequest)
 		{
@@ -51,6 +48,6 @@ function onClickLogin(whichbut){
 		
 		xmlhttp.open("POST","/appointing",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("room_id="+room_id+"&"+"time_period="+time_period);
+		xmlhttp.send("room_id="+room_id+"&"+"time_period="+time_period+"&"+"day_reserve="+day_reserve);
 	}
 

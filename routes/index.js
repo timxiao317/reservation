@@ -81,14 +81,14 @@ router.post('/login',function(req, res, next) {
        );
       });
 router.post('/appointing',function(req,res,next){
-	day_reserve = moment().format('YYYY-MM-DD');
-	console.log(day_reserve);
+	//day_reserve = moment().format('YYYY-MM-DD');
+	day_reserve = req.body.day_reserve;
 	var room_id = req.body.room_id;
 	var time_period = req.body.time_period;
 	var user_id = req.session.user;
 	var sqlparams = [user_id,room_id,day_reserve,time_period];
 	var sql = 'insert into users_rooms (user_id,room_id,day_reserve,time_period) values(?,?,?,?)';
-	console.log(sqlparams);
+	console.log("insert information:"+sqlparams);
 	connection.query(sql,sqlparams,function(err,result){
 		if(err){
 		  console.log('[INSERT ERROR] - ',err.message);
@@ -100,14 +100,18 @@ router.post('/appointing',function(req,res,next){
 	});
 });
 
-router.get('/acquire',function(req,res,next){
-	sql = 'Select user_id,room_id,day_reserve,time_period from users_rooms;';
-	connection.query(sql,function(err,result){
+router.post('/acquire',function(req,res,next){
+	day_reserve = req.body.day_reserve;
+	//console.log(day_reserve);
+	//day_reserve = day_reserve.format('YYYY-MM-DD');
+	sqlparams = [day_reserve];
+	console.log("acquire"+day_reserve);
+	sql = 'Select user_id,room_id,time_period from users_rooms where day_reserve = ?;';
+	connection.query(sql,sqlparams,function(err,result){
 		if(err){
 		  console.log('[SELECT ERROR] - ',err.message);
 		  return ;
 		}
-		console.log(result);
 		res.send(result);
 	});
 });
@@ -144,55 +148,67 @@ router.get('/lock',function(req,res,next){
 				var gap_date = moment().diff(day_reserve);
 				console.log(gap_date);
 				var time_period = result[i].time_period;
-				if (day_reserve==="a"&gap_date>=28800000&gap_date<=42300000)
+				if (day_reserve==="a"&gap_date>=28800000&gap_date<=32400000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="b"&gap_date>=43200000&gap_date<=56700000)
+				else if (day_reserve==="b"&gap_date>=32400000&gap_date<=36000000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="c"&gap_date>=57600000&gap_date<=61100000)
+				else if (day_reserve==="c"&gap_date>=36000000&gap_date<=39600000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="d"&gap_date>=115200000&gap_date<=128700000)
+				else if (day_reserve==="d"&gap_date>=39600000&gap_date<=43200000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="e"&gap_date>=129600000&gap_date<=143100000)
+				else if (day_reserve==="e"&gap_date>=46800000&gap_date<=5040000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="f"&gap_date>=144000000&gap_date<=157500000)
+				else if (day_reserve==="f"&gap_date>=50400000&gap_date<=54000000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="g"&gap_date>=201600000&gap_date<=215100000)
+				else if (day_reserve==="g"&gap_date>=54000000&gap_date<=57600000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="h"&gap_date>=216000000&gap_date<=229500000)
+				else if (day_reserve==="h"&gap_date>=57600000&gap_date<=61200000)
 					{
 						res.send('1');
 						judge = '1';
 						break;
 					}
-				else if (day_reserve==="i"&gap_date>=230400000&gap_date<=243900000)
+				else if (day_reserve==="i"&gap_date>=61200000&gap_date<=64800000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="j"&gap_date>=64800000&gap_date<=68400000)
+					{
+						res.send('1');
+						judge = '1';
+						break;
+					}
+				else if (day_reserve==="k"&gap_date>=68400000&gap_date<=72000000)
 					{
 						res.send('1');
 						judge = '1';

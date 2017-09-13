@@ -67,4 +67,11 @@ a {
 }
 /*p.rest{
 float:left;
+}*/
+
+h3[id="h3ForDate"]{
+	margin-top: 7px;
+}
+button[id="buttonForDate"]{
+	margin-top: 6px;
 }
