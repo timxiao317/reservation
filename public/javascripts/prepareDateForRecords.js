@@ -36,7 +36,7 @@ function prepareDate(){
       erDate = er.date.getDate();
       changedDate=erYear+"-"+erMonth+"-"+erDate;
       document.getElementById("currentDate").innerText=changedDate;
-      acquire();
+      adminRecordsAcquire();
  }); 
  today.setDate(today.getDate() + 7);
  $('.form_datetime').datetimepicker('setEndDate', today);

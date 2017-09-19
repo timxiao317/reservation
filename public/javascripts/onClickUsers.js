@@ -1,5 +1,5 @@
-addLoadEvent(prepareLogin);
-function prepareLogin()
+addLoadEvent(prepareDelete);
+function prepareDelete()
 {
 	if(!document.getElementById)
 	{
@@ -9,20 +9,23 @@ function prepareLogin()
 	{
 		return false;
 	}
-	var appointment = document.getElementsByClassName("appointment");
-	for(var i = 0; i < appointment.length ; i++ ){
-	appointment[i].onclick = function()
+	var deleteApp = document.getElementsByClassName("deleteApp");
+	for(var i = 0; i < deleteApp.length ; i++ ){
+	deleteApp[i].onclick = function()
 	{
-		onClickLogin(this);
-		acquire();
-		myAppAcquire();
+		onClickDelete(this);
+		adminAppAcquire();
 	};
 }
 }
 
-function onClickLogin(whichbut){
-	var room_id = whichbut.id.slice(0,3);
-	var time_period =whichbut.id.slice(3,4);
+function onClickDelete(whichbut){
+	var number = whichbut.id.slice(6,8);
+	number = parseInt(number);
+	var td_room_id = document.getElementsByClassName("td_room_id");
+	var td_time_period = document.getElementsByClassName("td_time_period");
+	var room_id = td_room_id[number].getAttribute("value");
+	var time_period = td_time_period[number].getAttribute("value");
 	var day_reserve = document.getElementById("currentDate").innerText;
 	var xmlhttp;
 	if (window.XMLHttpRequest)
@@ -38,17 +41,17 @@ function onClickLogin(whichbut){
 		xmlhttp.onreadystatechange = function()
 		{
 		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		  {
+		  { 	
 		  	//var logincontainer = document.getElementById("loign-container-001");
 		  	//logincontainer.setAttribute("aria-hidden","false");
 		    //var loginalert = document.getElementById("login-alert");
 		    //loginalert.setAttribute("class","alert alert-danger alert-dismissable");
-		    alert('预订成功！');
+		    alert('删除成功！');
 			}
 		  };
 		
-		xmlhttp.open("POST","/appointing",true);
+		xmlhttp.open("POST","/deleteApp",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("room_id="+room_id+"&"+"time_period="+time_period+"&"+"day_reserve="+day_reserve);
+		xmlhttp.send("room_id="+room_id+"&day_reserve="+day_reserve+"&time_period="+time_period);
 	}
 

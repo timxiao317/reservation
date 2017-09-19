@@ -17,7 +17,7 @@ function acquire()
 		appointment[i].classList.remove("disabled");
 		appointment[i].classList.remove("btn-suuccess");
 		appointment[i].classList.add("btn-info");
-		appointment[i].innerText = "已被预约";
+		appointment[i].innerText = "可预约";
 	}
 	var username = document.getElementById("username").innerText;
 	var xmlhttp;
@@ -76,7 +76,7 @@ function acquire()
 		  			appointed.classList.remove("btn-info");
 		  			appointed.classList.add("btn-success");
 		  			appointed.classList.add("disabled");
-		  			appointed.innerText ="您已预约"
+		  			appointed.innerText ="您已预约";
 		  			/*var width = parseInt(progress[0].style.width);
 		  			width = width - 10;
 		  			if(width>20&width<70){
